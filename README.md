@@ -22,7 +22,7 @@ Creating angular-client ... done
 Creating express-server ... done
 ```
 2. Ejecutar el siguiente comando:
-`[sudo] docker exec -it <container_id> bash -c "sh create_db.sh"`
+`[sudo] docker exec -it mongo_server bash -c "sh create_db.sh"`
 si todo sale bien podiblemente se vea en consola el siguiente mensaje:
 ```
 MongoDB shell version v4.2.7
