@@ -39,9 +39,9 @@ bye
 
 ## Contenedores y puertos:
 Los contenedores exponen los siguientes puertos:
-*__Nodejs__ en el puerto 3000
-*__Angular__ en el puerto 4200
-*__Mongodb__ en el puerto 27017
+- __Nodejs__ en el puerto 3000
+- __Angular__ en el puerto 4200
+- __Mongodb__ en el puerto 27017
 
 ### Notas:
 Para poder ver los contenedores ejecutandose, puede hacerlo con el siguiente comando en la terminal:
