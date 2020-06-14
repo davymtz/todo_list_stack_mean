@@ -1,3 +1,4 @@
 #Ignoring files
 
 /.idea
+docker-compose.yaml

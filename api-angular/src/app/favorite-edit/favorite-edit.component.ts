@@ -38,7 +38,7 @@ export class FavoriteEditComponent implements OnInit {
         .subscribe(favorite=> {
             this.favorite = favorite["result"][0];
             let date = (favorite["result"][0]["due_date_at"]!==null)?(new Date(favorite["result"][0]["due_date_at"]).toString()):"";
-            this.due_date = this.datePipe.transform(date, 'yyyy-MM-dd');
+            this.due_date = this.datePipe.transform(date, 'yyyy-MM-dd','UTC');
         });
   }
   submit():void {

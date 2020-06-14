@@ -23,8 +23,8 @@
     <tr *ngFor="let item of favorites">
       <td><input type="checkbox" (change)="updateCheck(item)" [checked]="item.activity_checked" [(ngModel)]="item.activity_checked"></td>
       <td [ngClass]="{'activity-complete': item.activity_checked}">{{item.activity}}</td>
-      <td [ngClass]="{'activity-complete': item.activity_checked}">{{ stringAsDate(item.created_at) | date: 'dd-MM-yyyy' }}</td>
-      <td [ngClass]="{'activity-complete': item.activity_checked}" *ngIf="item.due_date_at!=null;else nodata">{{ item.due_date_at | date: 'dd-MM-yyyy' }}</td>
+      <td [ngClass]="{'activity-complete': item.activity_checked}">{{ stringAsDate(item.created_at) | date: 'dd-MM-yyyy':'UTC' }}</td>
+      <td [ngClass]="{'activity-complete': item.activity_checked}" *ngIf="item.due_date_at!=null;else nodata">{{ stringAsDate(item.due_date_at) | date: 'dd-MM-yyyy':'UTC' }}</td>
       <ng-template #nodata><td>--</td></ng-template>
       <td class="text-center">
         <button id="btn_edit" class="btn btn-warning" routerLink="/edit/{{item._id}}" >
@@ -48,8 +48,8 @@
   <tr *ngFor="let item_complete of favoritesComplete">
     <td><input type="checkbox" (change)="updateCheck(item_complete)" [checked]="item_complete.activity_checked" [(ngModel)]="item_complete.activity_checked"></td>
     <td [ngClass]="{'activity-complete': item_complete.activity_checked}">{{item_complete.activity}}</td>
-    <td [ngClass]="{'activity-complete': item_complete.activity_checked}">{{ item_complete.created_at | date: 'dd/MM/yyyy':'UTC' }}</td>
-    <td [ngClass]="{'activity-complete': item_complete.activity_checked}" *ngIf="item_complete.due_date_at!=null;else nodata">{{ item_complete.due_date_at | date: 'dd/MM/yyyy':'UTC' }}</td>
+    <td [ngClass]="{'activity-complete': item_complete.activity_checked}">{{ stringAsDate(item_complete.created_at) | date: 'dd/MM/yyyy':'UTC' }}</td>
+    <td [ngClass]="{'activity-complete': item_complete.activity_checked}" *ngIf="item_complete.due_date_at!=null;else nodata">{{ stringAsDate(item_complete.due_date_at) | date: 'dd/MM/yyyy':'UTC' }}</td>
     <ng-template #nodata><td>--</td></ng-template>
   </tr>
   </tbody>
