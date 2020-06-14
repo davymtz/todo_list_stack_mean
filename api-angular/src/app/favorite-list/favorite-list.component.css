@@ -1,0 +1,26 @@
+input {
+    border-radius: 5px;
+    margin: 0 1em;
+    border: 1px solid black;
+    margin: 5px 5px;
+}
+input.task{
+    width: 40%;
+}
+input.dateTask {
+    width: 20%;
+}
+#btn_edit,#btn_delete{
+    margin: 0 0.2em;
+}
+.btn-task {
+    border-radius: 5px;
+    color: white;
+    background: forestgreen;
+}
+#input_task{
+    text-align: center;
+}
+.activity-complete{
+    text-decoration: line-through;
+}

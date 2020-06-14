@@ -1,0 +1,56 @@
+<h2 style="text-align:center">{{title}}</h2>
+<div id="input_task">
+  <label for="name">Activity task:</label>
+  <input type="text" #task name="name" class="task" />
+  <label for="date">Date task: </label>
+  <input type="date" #dateTask name="date" class="dateTask" value="" />
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button id="btn_add" (click)="add(task.value,dateTask.value); task.value='';dateTask.value=''" class="btn btn-task">
+    add
+  </button>
+</div>
+<hr />
+<h3>Incomplete Task</h3>
+<table class="table table-sm">
+  <thead class="thead-light">
+    <th>Checked</th>
+    <th>Activity</th>
+    <th>Created</th>
+    <th>Due date</th>
+    <th class="text-center">Acciones</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of favorites">
+      <td><input type="checkbox" (change)="updateCheck(item)" [checked]="item.activity_checked" [(ngModel)]="item.activity_checked"></td>
+      <td [ngClass]="{'activity-complete': item.activity_checked}">{{item.activity}}</td>
+      <td [ngClass]="{'activity-complete': item.activity_checked}">{{ stringAsDate(item.created_at) | date: 'dd-MM-yyyy' }}</td>
+      <td [ngClass]="{'activity-complete': item.activity_checked}" *ngIf="item.due_date_at!=null;else nodata">{{ item.due_date_at | date: 'dd-MM-yyyy' }}</td>
+      <ng-template #nodata><td>--</td></ng-template>
+      <td class="text-center">
+        <button id="btn_edit" class="btn btn-warning" routerLink="/edit/{{item._id}}" >
+          <i class="fa fa-pencil"></i>
+        </button>
+        <button id="btn_delete" class="btn btn-danger" (click)="delete(item);">&times;</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<hr />
+<h3>Complete task</h3>
+<table class="table table-sm">
+  <thead class="thead-light">
+  <th>Checked</th>
+  <th>Activity</th>
+  <th>Created</th>
+  <th>Due date</th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item_complete of favoritesComplete">
+    <td><input type="checkbox" (change)="updateCheck(item_complete)" [checked]="item_complete.activity_checked" [(ngModel)]="item_complete.activity_checked"></td>
+    <td [ngClass]="{'activity-complete': item_complete.activity_checked}">{{item_complete.activity}}</td>
+    <td [ngClass]="{'activity-complete': item_complete.activity_checked}">{{ item_complete.created_at | date: 'dd/MM/yyyy':'UTC' }}</td>
+    <td [ngClass]="{'activity-complete': item_complete.activity_checked}" *ngIf="item_complete.due_date_at!=null;else nodata">{{ item_complete.due_date_at | date: 'dd/MM/yyyy':'UTC' }}</td>
+    <ng-template #nodata><td>--</td></ng-template>
+  </tr>
+  </tbody>
+</table>

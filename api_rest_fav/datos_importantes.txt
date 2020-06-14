@@ -1,0 +1,6 @@
+# Desde npm instalar => npm install <<paquete>> --save
+# -express
+# -body-parser
+# -mongoose
+
+#Después instalar Nodemon con -d

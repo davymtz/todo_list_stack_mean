@@ -1,0 +1,35 @@
+version: "3.1"
+
+services:
+  angular:
+    container_name: angular-client
+    build: ./api-angular
+    image: angular-client:dev
+    #volumes:
+    #  - ./api-angular:/usr/src/app
+    #  - /usr/src/app/node_modules
+    ports:
+      - "4200:4200"
+
+  express:
+    container_name: express-server
+    build: ./api_rest_fav
+    image: express-server:dev
+    #volumes:
+    #  - ./api_rest_fav:/usr/src/app
+    #  - /usr/src/app/node_modules
+    ports:
+      - "3000:3000"
+    links:
+      - database:mongodb
+
+  database:
+    container_name: mongo_server
+    build: ./mongodb
+    image: mongodb:dev
+    ports:
+      - "27017:27017"
+    #volumes:
+    #  - ./mongodb/mongo-data:/data/db
+
+

@@ -1,0 +1,20 @@
+<h2>{{title}}</h2>
+<form (submit)="submit()" #formularioToDoList="ngForm">
+    <div class="form-group">
+        <label for="activity">Activity</label>
+        <input type="text" #activity="ngModel" name="activity" id="activity" class="form-control" [(ngModel)]="favorite.activity" required>
+        <div *ngIf="activity.invalid && (activity.dirty || activity.touched)" class="alert alert-danger">
+            <div *ngIf="activity.errors.required">
+                La actividad es requerida
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="dateTask">Due date</label>
+        <input type="date" name="dueTask" id="dueTask" class="form-control" [(ngModel)]="due_date">
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="!formularioToDoList.form.valid">
+        Actualizar
+    </button>
+    <button type="button" class="btn btn-default" (click)="goBack()">Regresar</button>
+</form>
